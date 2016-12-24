@@ -1,3 +1,4 @@
+<div class="row">
 <%= form_for(listing) do |f| %>
   <% if listing.errors.any? %>
     <div id="error_explanation">
@@ -10,18 +11,29 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="row">
+    <div class="input-field col">
+      <%= f.text_area :title, id: "textarea1", class: "materialize-textarea" %>
+      <label for="textarea1">Give it a title</label>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :desc %>
-    <%= f.text_area :desc %>
+  
+  
+  <div class="row">
+      <div class="row">
+        <div class="input-field col s6">
+          <%= f.text_area :desc, id: "textarea1", class: "materialize-textarea" %>
+          <label for="textarea1">Description</label>
+        </div>
+      </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  
+  <div class="row">
+    <div class="input-field col s6">
+      <div class="actions">
+        <%= f.submit "Create", class:"waves-effect waves-light btn"%>
+      </div>
+    </div>
   </div>
 <% end %>
+</div>
