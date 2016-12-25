@@ -1,0 +1,21 @@
+<h1>Create your Applicant profile</h1>
+
+<%= form_for(@applicantprofile) do |f| %>
+    
+    <!--profile picture-->
+    <div class="row">
+    <div class="input-field col">
+      <%= f.file_field :profile_pic, id: "textarea1", class: "materialize-textarea" %>
+    </div>
+    </div>
+
+    <!--submit button -->
+    <div class="row">
+    <div class="input-field col s6">
+      <div class="actions">
+        <%= f.submit "Create", class:"waves-effect waves-light btn"%>
+      </div>
+    </div>
+    </div>
+    
+<% end %>
