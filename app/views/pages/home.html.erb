@@ -21,7 +21,8 @@
         <p>Tirak helps you find local job postings and instantly apply for jobs and get hired in munutes ;)</p>
       </div>
       <div class="card-action">
-        <a class="waves-effect waves-light btn-large">Active Jobs Listings</a>
+        <%= link_to "Active Jobs Listings", listings_path, class: "waves-effect waves-light btn-large"  %>
+        
         <% if user_signed_in? %>
           <% if current_user.applicantprofile %>
             <%= link_to "#{current_user.first_name}'s Profile", 

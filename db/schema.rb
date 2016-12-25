@@ -10,14 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161224213206) do
+ActiveRecord::Schema.define(version: 20161225062437) do
 
   create_table "applicantprofiles", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.string   "profile_pic"
+    t.text     "bio"
     t.index ["user_id"], name: "index_applicantprofiles_on_user_id"
+  end
+
+  create_table "applications", force: :cascade do |t|
+    t.integer  "applicant_id"
+    t.integer  "poster_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "listing_id"
+    t.index ["listing_id"], name: "index_applications_on_listing_id"
   end
 
   create_table "listings", force: :cascade do |t|

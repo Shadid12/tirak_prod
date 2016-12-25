@@ -16,11 +16,14 @@
           href="/listings/<%= listing.id %>">
             <i class="material-icons">description</i>
           </a>
+          <% if user_signed_in? %>
+            <%= link_to 'Apply', applications_path(listing_id: listing.id, applicant_id: current_user.id, 
+            poster_id: listing.user_id), method: "post" %>
+          <% end %>
         </p>
       </div>
     </li>
   </ul>
 <% end %>
-
     </div>
 </div>
