@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :applications, only: [:create, :show] 
   devise_for :users, :controllers => { registrations: 'registrations' }
   root to: "pages#home"
+  get '/notifications', to: 'pages#notifications'
 end

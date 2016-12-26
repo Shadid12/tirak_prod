@@ -1,11 +1,11 @@
-<h1>Create your Applicant profile</h1>
+<h1><%= current_user.first_name %>'s profile</h1>
 
 <%= form_for(@applicantprofile) do |f| %>
     
     <!--profile picture-->
     <div class="row">
     <div class="input-field col">
-      <%= f.file_field :profile_pic, id: "textarea1", class: "materialize-textarea" %>
+      profile pic: <%= f.file_field :profile_pic, id: "textarea1", class: "materialize-textarea" %>
     </div>
     </div>
     

@@ -1,6 +1,14 @@
  <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo">Tirak</a>
+      <a href="/" class="brand-logo center">Tirak</a>
+      <% if user_signed_in? %>
+          <% if current_user.applicantprofile %>
+              <a class="left"><img class="img-circle" src="<%= current_user.applicantprofile.profile_pic.thumb %>">
+              </a>
+              <%= link_to "#{current_user.first_name} #{current_user.last_name}", 
+                    applicantprofile_path(current_user.applicantprofile), class: "left hide-on-med-and-down" %>
+          <% end %>
+      <% end %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if user_signed_in? %>
             <li><%= link_to "Post Listing", new_listing_path %></li>
@@ -12,3 +20,24 @@
       </ul>
     </div>
  </nav>
+
+<% if user_signed_in? && current_user.listing.count != 0 %>
+   <% l = current_user.listing %>
+   <% applications = 0 %>
+   <% l.each do |k| %>
+       <% applications = applications + k.applications.count %>
+   <% end %>
+       you have <%= link_to "#{applications} applicants" , notifications_path, 
+       class: "collection-item" %> awating for your response
+<% end %>
+
+
+
+
+<style>
+  .img-circle {
+    border-radius: 50%;
+    width: 60px;
+    height: auto;
+}
+</style>

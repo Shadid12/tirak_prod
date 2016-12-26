@@ -39,13 +39,19 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1
   # PATCH/PUT /listings/1.json
   def update
-    respond_to do |format|
-      if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
-        format.json { render :show, status: :ok, location: @listing }
-      else
-        format.html { render :edit }
-        format.json { render json: @listing.errors, status: :unprocessable_entity }
+    if @listing.user == current_user
+      respond_to do |format|
+        if @listing.update(listing_params)
+          format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
+          format.json { render :show, status: :ok, location: @listing }
+        else
+          format.html { render :edit }
+          format.json { render json: @listing.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @listing, notice: ' you are not allowed to edit this ' }
       end
     end
   end

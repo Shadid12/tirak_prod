@@ -1,0 +1,9 @@
+<% @l.each do |listing| %>
+    <h4><%= listing.title %></h4>
+    <% app = listing.applications %>
+    <% app.each do |application| %>
+        <% applicant = User.find(application.applicant_id) %>
+        <%= applicant.first_name %> Applied to this position <br>
+        
+    <% end %>
+<% end %>
