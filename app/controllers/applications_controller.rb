@@ -1,6 +1,13 @@
 class ApplicationsController < ApplicationController 
-    def create
-        
+    
+    def approve_app
+        @a = Application.find_by(applications_params)
+        @a.status = "approved"
+        @a.save
+    end
+    
+    def show_approval
+        @approvals = current_user.applications.where(status:"approved")
     end
     
     def create
@@ -29,4 +36,6 @@ class ApplicationsController < ApplicationController
     def app_params
         params.permit(:applicant_id, :poster_id)
     end
+    
+    
 end

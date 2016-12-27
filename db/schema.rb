@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161225062437) do
+ActiveRecord::Schema.define(version: 20161226224522) do
 
   create_table "applicantprofiles", force: :cascade do |t|
     t.datetime "created_at",  null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20161225062437) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "listing_id"
+    t.string   "status"
     t.index ["listing_id"], name: "index_applications_on_listing_id"
   end
 
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 20161225062437) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.string   "status"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 

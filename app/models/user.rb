@@ -6,4 +6,5 @@ class User < ApplicationRecord
          
   has_many :listing
   has_one :applicantprofile
+  has_many :applications, :foreign_key => :applicant_id
 end

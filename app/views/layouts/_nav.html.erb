@@ -5,8 +5,16 @@
           <% if current_user.applicantprofile %>
               <a class="left"><img class="img-circle" src="<%= current_user.applicantprofile.profile_pic.thumb %>">
               </a>
+              <ul id="nav-mobile" class="left hide-on-med-and-down">
               <%= link_to "#{current_user.first_name} #{current_user.last_name}", 
-                    applicantprofile_path(current_user.applicantprofile), class: "left hide-on-med-and-down" %>
+                    applicantprofile_path(current_user.applicantprofile) %>
+              </ul>
+          <% else %>
+              <ul id="nav-mobile" class="left hide-on-med-and-down">
+                  Complete your profile for better experience
+                  <%= link_to "Profile", 
+                        new_applicantprofile_path, class: "btn waves-effect waves-light" %>
+              </ul>
           <% end %>
       <% end %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -21,6 +29,7 @@
     </div>
  </nav>
 
+<!--logic for users who post jobs -->
 <% if user_signed_in? && current_user.listing.count != 0 %>
    <% l = current_user.listing %>
    <% applications = 0 %>
@@ -30,7 +39,11 @@
        you have <%= link_to "#{applications} applicants" , notifications_path, 
        class: "collection-item" %> awating for your response
 <% end %>
-
+<!--log for applicants -->
+<% if user_signed_in? && current_user.applications.count != 0 %>
+    <% approved = current_user.applications.where(status:"approved").count %>
+    You have <%= link_to "#{approved} Aprovals", show_approval_path %>
+<% end %>
 
 
 

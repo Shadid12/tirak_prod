@@ -4,6 +4,10 @@
     <% app.each do |application| %>
         <% applicant = User.find(application.applicant_id) %>
         <%= applicant.first_name %> Applied to this position <br>
-        
+        <%= link_to "Approve Request", approve_app_path(listing_id: application.listing_id, 
+        applicant_id: application.applicant_id, 
+        poster_id: application.poster_id), 
+        method: "post", class: "btn small", 
+        onclick: "Materialize.toast('Request Approved', 4000)" %>
     <% end %>
 <% end %>

@@ -1,0 +1,6 @@
+<h1>Your Job Approvals</h1>
+
+<% @approvals.each do |f| %>
+    <%# job = Listing.find(f.listing_id) %>
+    <p> You are now approved for <b><%= Listing.find(f.listing_id).title %></b></p>
+<% end %>
